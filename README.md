@@ -1,7 +1,4 @@
 # Bookmarks
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.3.8.
-
-## About this project
 This is a very simple front-end only app to register bookmarks. It is coded in **Angular 8** with **NgRx** to manage the `state`.
 
 ## How to check the project
@@ -50,19 +47,35 @@ bookmarks
 
 The `app` folder has been structured to make it easy to understand the contents and their role in the application. It contains the **root app** component and module, the **routing** module and three more folders:
 
-### bokmarks
+### bookmarks
 In this folder we have the main component of the app (`bookmarks-component`), the dialog to add new bookmarks (`add-bookmark-dialog-component`), the state management folder for this container (`+state`), the related services simulating an API (`services`) and the module.
 
 ### nav-var
 Here we can find the navigation bar of the app. It contains the component itself (`nav-bar-component`) and the module.
 
 ### shared
-Lastly, all components and modules that are likely to be reused if this project were to scale have been placed here, including a dedicated `angular-material` module to keep the rest of the modules import section clean and components for the `expandable-table` to keep the bookmarks grouped and the `table` component used to populate it.
-
+Lastly, all components and modules that are likely to be reused if this project were to scale have been placed here, including a dedicated `angular-material` module to keep the rest of the modules import section clean. We also find  components for the `expandable-table` to keep the bookmarks grouped and the `table` used to populate it.
 ## Usage
 The app is very straight forward, once launched you get directly into your bookmarks:
 
 ![Alt text](readme-assets/bookmarks-screen.jpg?raw=true "Bookmarks Screen")
 
-From here you can check your current bookmarks by group or create a new one. Clicking the `ADD` button will pop a dialog window to enter the new bookmark:
+From here you can check your current bookmarks by group or create a new one. Clicking the `ADD` FAB will pop a dialog window to enter the new bookmark:
 
+![Alt text](readme-assets/add-dialog.jpg?raw=true "Bookmarks Screen")
+
+Input will be validated:
+
+![Alt text](readme-assets/invalid-form.jpg?raw=true "Bookmarks Screen")
+![Alt text](readme-assets/valid-form.jpg?raw=true "Bookmarks Screen")
+
+After clicking `ADD`, the bookmark will be added to the corresponding group of the `expandable-table`:
+
+![Alt text](readme-assets/bookmark-added-1.jpg?raw=true "Bookmarks Screen")
+![Alt text](readme-assets/bookmark-added-2.jpg?raw=true "Bookmarks Screen")
+
+Clicking in the `link` icon will open the bookmark in a new tab. Clicking in the `delete` icon will remove this bookmark.
+
+Populated example:
+
+![Alt text](readme-assets/populated.jpg?raw=true "Bookmarks Screen")

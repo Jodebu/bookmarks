@@ -15,7 +15,7 @@ export class BookmarkEffects {
   GetBookmarks$: Observable<Action> = createEffect(() =>
     this.action$.pipe(
       ofType(BookmarkActions.BeginGetBookmarkAction),
-      mergeMap(action =>
+      mergeMap(() =>
         this.bookmarkService.getBookmarks().pipe(
           map((data: Bookmark[]) => {
               return BookmarkActions.SuccessGetBookmarkAction({ payload: data });
@@ -31,7 +31,7 @@ export class BookmarkEffects {
   CreateBookmarks$: Observable<Action> = createEffect(() =>
     this.action$.pipe(
       ofType(BookmarkActions.BeginCreateBookmarkAction),
-      mergeMap(action =>
+      mergeMap((action: any) =>
         this.bookmarkService.addBookmark(action.payload).pipe(
           map((data: Bookmark) => {
               return BookmarkActions.SuccessCreateBookmarkAction({ payload: data });
@@ -47,7 +47,7 @@ export class BookmarkEffects {
   DeleteBookmarks$: Observable<Action> = createEffect(() =>
     this.action$.pipe(
       ofType(BookmarkActions.BeginDeleteBookmarkAction),
-      mergeMap(action =>
+      mergeMap((action: any) =>
         this.bookmarkService.deleteBookmark(action.payload).pipe(
           map((data: Bookmark) => {
               return BookmarkActions.SuccessDeleteBookmarkAction({ payload: data });

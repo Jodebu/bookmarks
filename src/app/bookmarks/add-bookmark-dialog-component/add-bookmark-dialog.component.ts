@@ -22,11 +22,7 @@ export class AddBookmarkDialogComponent {
   createBookmark() {
     this.dialogRef.close(this.getBookmark());
   }
-
-  close() {
-      this.dialogRef.close();
-  }
-
+  
   getBookmark(): Bookmark {
     return {
       name: this.name,
@@ -34,8 +30,12 @@ export class AddBookmarkDialogComponent {
       group: this.group
     };
   }
-
+  
   isValid(): boolean {
     return this.name !== '' && this.url !== '' && this.group !== null
+  }
+  
+  close() {
+      this.dialogRef.close();
   }
 }

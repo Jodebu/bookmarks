@@ -6,7 +6,7 @@ import * as BookmarkActions from '../ngrx/bookmarks.action';
 import Bookmark, { Group } from '../ngrx/bookmarks.model';
 import BookmarkState from '../ngrx/bookmarks.state';
 import { MatDialog } from '@angular/material/dialog';
-import { AddBookmarkDialogComponent } from '../add-bookmark-dialog/add-bookmark-dialog.component';
+import { AddBookmarkDialogComponent } from '../add-bookmark-dialog-component/add-bookmark-dialog.component';
 
 @Component({
   selector: 'app-bookmarks',
@@ -14,6 +14,11 @@ import { AddBookmarkDialogComponent } from '../add-bookmark-dialog/add-bookmark-
   styleUrls: ['./bookmarks.component.scss']
 })
 export class BookmarksComponent implements OnInit, OnDestroy {
+  
+  bookmark$: Observable<BookmarkState>;
+  bookmarkSubscription: Subscription;
+  bookmarkList: Bookmark[] = [];
+  bookmarkError: Error = null;
 
   constructor(
     private store: Store<{ bookmarks: BookmarkState }>,
@@ -22,17 +27,12 @@ export class BookmarksComponent implements OnInit, OnDestroy {
     this.bookmark$ = store.pipe(select('bookmarks'));
   }
 
-  bookmark$: Observable<BookmarkState>;
-  bookmarkSubscription: Subscription;
-  bookmarkList: Bookmark[] = [];
-  bookmarkError: Error = null;
-
   ngOnInit() {
     this.bookmarkSubscription = this.bookmark$
       .pipe(
-        map(x => {
-          this.bookmarkList = x.bookmarks;
-          this.bookmarkError = x.bookmarkError;
+        map((state: BookmarkState) => {
+          this.bookmarkList = state.bookmarks;
+          this.bookmarkError = state.bookmarkError;
         })
       )
       .subscribe();
@@ -43,22 +43,22 @@ export class BookmarksComponent implements OnInit, OnDestroy {
   getGroups(): string[] {
     return Object.values(Group);
   }
-
-  deleteBookmark(bookmark: Bookmark): void {
-    this.store.dispatch(BookmarkActions.BeginDeleteBookmarkAction({ payload: bookmark }));
-  }
-
+  
   openAddBookmarkDialog(): void {
     this.dialog.open(AddBookmarkDialogComponent, {
       autoFocus: true,
       disableClose: true
-    }).afterClosed().subscribe(
-      (bookmark: Bookmark) => {
+    }).afterClosed()
+      .subscribe((bookmark: Bookmark) => {
         if (bookmark) {
           this.store.dispatch(BookmarkActions.BeginCreateBookmarkAction({ payload: bookmark }));
         }
       }
     );
+  }
+
+  deleteBookmark(bookmark: Bookmark): void {
+    this.store.dispatch(BookmarkActions.BeginDeleteBookmarkAction({ payload: bookmark }));
   }
 
   ngOnDestroy() {

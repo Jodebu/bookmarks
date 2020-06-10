@@ -1,15 +1,15 @@
 <h2 mat-dialog-title>Create new bookmark</h2>
 
 <mat-dialog-content>
-    <mat-form-field appearance="standard">
+    <mat-form-field appearance="fill">
         <mat-label>Name</mat-label>
         <input matInput [(ngModel)]="name" required="true">
     </mat-form-field>
-    <mat-form-field appearance="standard">
+    <mat-form-field appearance="fill">
         <mat-label>URL</mat-label>
         <input matInput [(ngModel)]="url" required="true">
     </mat-form-field>
-    <mat-form-field appearance="standard">
+    <mat-form-field appearance="fill">
         <mat-label>Group</mat-label>
         <mat-select [(ngModel)]="group" required="true">
             <mat-option *ngFor="let group of getGroups()" [value]="group"> {{group}} </mat-option>

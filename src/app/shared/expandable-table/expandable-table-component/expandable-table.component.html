@@ -1,5 +1,5 @@
 <mat-accordion>
-    <mat-expansion-panel *ngFor="let group of groups" [disabled]="getGroupData(group).length < 1">
+    <mat-expansion-panel *ngFor="let group of groups" [disabled]="getGroupData(group).length < 1" #panel>
         <mat-expansion-panel-header>
             <mat-panel-title>
               {{ group }}
@@ -11,7 +11,7 @@
 
         <app-table
             [dataSource]=getGroupData(group)
-            (onDelete)=deleteItem($event)
+            (onDelete)=deleteItem($event,group,panel)
         ></app-table>
 
     </mat-expansion-panel>

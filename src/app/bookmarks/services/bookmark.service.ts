@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import Bookmark from '../ngrx/bookmarks.model';
+import Bookmark from '../+state/bookmarks.model';
 import { of, Observable } from 'rxjs';
 
 @Injectable({

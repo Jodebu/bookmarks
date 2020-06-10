@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { MatDialogRef } from '@angular/material/dialog';
-import Bookmark, { Group } from '../ngrx/bookmarks.model';
+import Bookmark, { Group } from '../+state/bookmarks.model';
 
 @Component({
   selector: 'app-add-bookmark-dialog',

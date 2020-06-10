@@ -7,7 +7,7 @@ export const intialState = initializeState();
 
 const reducer = createReducer(
   intialState,
-  on(BookmarkActions.GetBookmarkAction, state => state),
+  on(BookmarkActions.GetBookmarkAction, (state: BookmarkState) => state),
   on(BookmarkActions.CreateBookmarkAction, (state: BookmarkState, item: Bookmark) => {
     return { ...state, bookmarks: [...state.bookmarks, item], bookmarkError: null };
   }),

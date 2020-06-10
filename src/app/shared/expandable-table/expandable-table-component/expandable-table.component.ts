@@ -1,4 +1,5 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { MatExpansionPanel } from '@angular/material/expansion';
 
 @Component({
   selector: 'app-expandable-table',
@@ -15,7 +16,9 @@ export class ExpandableTableComponent {
     return this.data.filter((element: any) => element.group === group);
   }
 
-  deleteItem(item: any): void {
+  deleteItem(item: any, group: string, panel: MatExpansionPanel): void {
+    if (this.getGroupData(group).length < 2)
+      panel.close();
     this.onDelete.emit(item);
   }
 }

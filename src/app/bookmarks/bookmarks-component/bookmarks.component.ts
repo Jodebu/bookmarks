@@ -2,9 +2,9 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { select, Store } from '@ngrx/store';
 import { Observable, Subscription } from 'rxjs';
 import { map } from 'rxjs/operators';
-import * as BookmarkActions from '../ngrx/bookmarks.action';
-import Bookmark, { Group } from '../ngrx/bookmarks.model';
-import BookmarkState from '../ngrx/bookmarks.state';
+import * as BookmarkActions from '../+state/bookmarks.action';
+import Bookmark, { Group } from '../+state/bookmarks.model';
+import BookmarkState from '../+state/bookmarks.state';
 import { MatDialog } from '@angular/material/dialog';
 import { AddBookmarkDialogComponent } from '../add-bookmark-dialog-component/add-bookmark-dialog.component';
 

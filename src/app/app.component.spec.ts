@@ -20,16 +20,16 @@ describe('AppComponent', () => {
     expect(app).toBeTruthy();
   });
 
-  it(`should have as title 'accenture-test'`, () => {
+  it(`should have as title 'bookmarks'`, () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.debugElement.componentInstance;
-    expect(app.title).toEqual('accenture-test');
+    expect(app.title).toEqual('bookmarks');
   });
 
   it('should render title', () => {
     const fixture = TestBed.createComponent(AppComponent);
     fixture.detectChanges();
     const compiled = fixture.debugElement.nativeElement;
-    expect(compiled.querySelector('.content span').textContent).toContain('accenture-test app is running!');
+    expect(compiled.querySelector('.content span').textContent).toContain('bookmarks app is running!');
   });
 });

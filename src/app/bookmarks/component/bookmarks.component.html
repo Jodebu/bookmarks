@@ -1,0 +1,19 @@
+<div class="container">
+    <h2>My Bookmarks</h2>
+  
+    <div *ngIf="bookmarkError?.message">
+      <div class="alert alert-danger" role="alert">
+        Some error occurred. Please try again
+      </div>
+    </div>
+  
+    <app-expandable-table
+        [groups]=getGroups()
+        [data]=bookmarkList
+        (onDelete)=deleteBookmark($event)
+    ></app-expandable-table>
+
+  <hr />
+
+  <button mat-raised-button color=primary (click)=openAddBookmarkDialog()> ADD </button>
+</div>

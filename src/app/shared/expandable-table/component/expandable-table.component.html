@@ -1,0 +1,19 @@
+<mat-accordion>
+    <mat-expansion-panel *ngFor="let group of groups">
+        <mat-expansion-panel-header>
+            <mat-panel-title>
+              {{ group }}
+            </mat-panel-title>
+            <mat-panel-description>
+              {{ getGroupData(group).length }} item(s) in this group
+            </mat-panel-description>
+        </mat-expansion-panel-header>
+
+        <app-table
+            [dataSource]=getGroupData(group)
+            (onDelete)=deleteItem($event)
+        ></app-table>
+
+    </mat-expansion-panel>
+</mat-accordion>
+  

@@ -1,0 +1,14 @@
+<mat-toolbar color="primary">
+    <mat-toolbar-row>
+      <mat-icon aria-hidden="false" aria-label="Bookmark icon">bookmark</mat-icon>
+      <h1>Bookmarks</h1>
+      <span class="menu-spacer"></span>
+      <div>
+        <a mat-button [routerLink]="'/'"> My Bookmarks </a>
+        <a mat-button target='_blank' href="https://www.linkedin.com/in/yayoacosta/"> LinkedIn </a>
+        <a mat-button target='_blank' href="https://github.com/Jodebu"> GitHub </a>
+      </div>
+    </mat-toolbar-row>
+  </mat-toolbar>
+  
+  <router-outlet></router-outlet>

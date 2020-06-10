@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { MatDialogRef } from '@angular/material/dialog';
 import Bookmark, { Group } from '../+state/bookmarks.model';
+import { FormControl, FormGroup, Validators, FormBuilder } from '@angular/forms';
 
 @Component({
   selector: 'app-add-bookmark-dialog',
@@ -9,11 +10,16 @@ import Bookmark, { Group } from '../+state/bookmarks.model';
 })
 export class AddBookmarkDialogComponent {
 
-  name: string = '';
-  url: string = '';
-  group: Group = null;
+  form: FormGroup = this.formBuilder.group({
+    name: ['', Validators.required],
+    url: ['', [Validators.required, Validators.pattern('https?://.+')]],
+    group: ['', Validators.required]
+  });
 
-  constructor(private dialogRef: MatDialogRef<AddBookmarkDialogComponent>) { }
+  constructor(
+    private dialogRef: MatDialogRef<AddBookmarkDialogComponent>,
+    private formBuilder: FormBuilder
+    ) { }
 
   getGroups(): string[] {
     return Object.values(Group);
@@ -25,14 +31,14 @@ export class AddBookmarkDialogComponent {
   
   getBookmark(): Bookmark {
     return {
-      name: this.name,
-      url: this.url,
-      group: this.group
+      name: this.form.value.name,
+      url: this.form.value.url,
+      group: this.form.value.group
     };
   }
   
-  isValid(): boolean {
-    return this.name !== '' && this.url !== '' && this.group !== null
+  isFormValid(): boolean {
+    return this.form.valid;
   }
   
   close() {

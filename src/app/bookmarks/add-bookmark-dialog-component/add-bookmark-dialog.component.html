@@ -1,23 +1,29 @@
 <h2 mat-dialog-title>Create new bookmark</h2>
 
 <mat-dialog-content>
-    <mat-form-field appearance="fill">
-        <mat-label>Name</mat-label>
-        <input matInput [(ngModel)]="name" required="true">
-    </mat-form-field>
-    <mat-form-field appearance="fill">
-        <mat-label>URL</mat-label>
-        <input matInput [(ngModel)]="url" required="true">
-    </mat-form-field>
-    <mat-form-field appearance="fill">
-        <mat-label>Group</mat-label>
-        <mat-select [(ngModel)]="group" required="true">
-            <mat-option *ngFor="let group of getGroups()" [value]="group"> {{group}} </mat-option>
-        </mat-select>
-    </mat-form-field>
+    <form [formGroup]="form">
+        <mat-form-field appearance="fill">
+            <mat-label>Name</mat-label>
+            <input matInput formControlName="name">
+            <mat-error *ngIf="form.controls.name.hasError('required')">Required field</mat-error>
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+            <mat-label>URL</mat-label>
+            <input matInput formControlName="url">
+            <mat-error *ngIf="form.controls.url.hasError('required')">Required field</mat-error>
+            <mat-error *ngIf="form.controls.url.hasError('pattern')">Not a valid URL</mat-error>
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+            <mat-label>Group</mat-label>
+            <mat-select formControlName="group">
+                <mat-option *ngFor="let group of getGroups()" [value]="group"> {{group}} </mat-option>
+            </mat-select>
+            <mat-error *ngIf="form.controls.group.hasError('required')">Required field</mat-error>
+        </mat-form-field>
+    </form>
 </mat-dialog-content>
 
 <mat-dialog-actions>
     <button mat-raised-button (click)=close()> CANCEL </button>
-    <button mat-raised-button [disabled]=!isValid() color=primary (click)=createBookmark()> ADD </button>
+    <button mat-raised-button [disabled]=!isFormValid() color=primary (click)=createBookmark()> ADD </button>
 </mat-dialog-actions>

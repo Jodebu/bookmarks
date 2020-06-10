@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { SharedModule } from '../shared/shared.module';
 import { AddBookmarkDialogComponent } from './add-bookmark-dialog-component/add-bookmark-dialog.component';
 import { BookmarksComponent } from './bookmarks-component/bookmarks.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -11,7 +12,8 @@ import { BookmarksComponent } from './bookmarks-component/bookmarks.component';
   ],
   imports: [
     CommonModule,
-    SharedModule
+    SharedModule,
+    ReactiveFormsModule
   ],
   entryComponents: [
     AddBookmarkDialogComponent

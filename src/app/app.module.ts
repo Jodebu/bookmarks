@@ -8,7 +8,6 @@ import { SharedModule } from './shared/shared.module';
 import { NavBarModule } from './nav-bar/nav-bar.module';
 import { StoreModule } from '@ngrx/store';
 import { BookmarkReducer } from './bookmarks/+state/bookmarks.reducer';
-import { FormsModule } from '@angular/forms';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { EffectsModule } from '@ngrx/effects';
 import { BookmarkEffects } from './bookmarks/+state/bookmarks.effects';
@@ -20,7 +19,6 @@ import { BookmarksModule } from './bookmarks/bookmarks.module';
   ],
   imports: [
     BrowserModule,
-    FormsModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     BookmarksModule,

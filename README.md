@@ -55,6 +55,7 @@ Here we can find the navigation bar of the app. It contains the component itself
 
 ### shared
 Lastly, all components and modules that are likely to be reused if this project were to scale have been placed here, including a dedicated `angular-material` module to keep the rest of the modules import section clean. We also find  components for the `expandable-table` to keep the bookmarks grouped and the `table` used to populate it.
+
 ## Usage
 The app is very straight forward, once launched you get directly into your bookmarks:
 
@@ -62,20 +63,30 @@ The app is very straight forward, once launched you get directly into your bookm
 
 From here you can check your current bookmarks by group or create a new one. Clicking the `ADD` FAB will pop a dialog window to enter the new bookmark:
 
-![Alt text](readme-assets/add-dialog.jpg?raw=true "Bookmarks Screen")
+![Alt text](readme-assets/add-dialog.jpg?raw=true "Add bookmark")
 
 Input will be validated:
 
-![Alt text](readme-assets/invalid-form.jpg?raw=true "Bookmarks Screen")
-![Alt text](readme-assets/valid-form.jpg?raw=true "Bookmarks Screen")
+![Alt text](readme-assets/invalid-form.jpg?raw=true "Invalid form")
+![Alt text](readme-assets/valid-form.jpg?raw=true "Valid form")
 
 After clicking `ADD`, the bookmark will be added to the corresponding group of the `expandable-table`:
 
-![Alt text](readme-assets/bookmark-added-1.jpg?raw=true "Bookmarks Screen")
-![Alt text](readme-assets/bookmark-added-2.jpg?raw=true "Bookmarks Screen")
+![Alt text](readme-assets/bookmark-added-1.jpg?raw=true "Contracted Bookmarks Screen")
+![Alt text](readme-assets/bookmark-added-2.jpg?raw=true "Expanded Bookmarks Screen")
 
 Clicking in the `link` icon will open the bookmark in a new tab. Clicking in the `delete` icon will remove this bookmark.
 
 Populated example:
 
-![Alt text](readme-assets/populated.jpg?raw=true "Bookmarks Screen")
+![Alt text](readme-assets/populated.jpg?raw=true "Populated Bookmarks Screen")
+
+## Desired improvements
+- Edit bookmarks
+- Persist data in browser local storage
+- Open corresponding panel after adding bookmark
+- Import/export data from file
+- Search field to filter bookmarks
+- Check bookmark availability status
+- Share bookmarks in social media
+- Theme swap
